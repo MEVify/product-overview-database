@@ -7,45 +7,45 @@ CREATE TABLE IF NOT EXISTS product (
   default_price INT
 );
 
-CREATE TABLE styles (
+CREATE TABLE IF NOT EXISTS styles (
   id INT PRIMARY KEY,
   product_id INT REFERENCES product(id),
-  name VARCHAR(25),
+  name VARCHAR(200),
   sale_price INT,
   original_price INT,
   default_style INT
 );
 
-CREATE TABLE features (
+CREATE TABLE IF NOT EXISTS features (
   id INT PRIMARY KEY,
   product_id INT REFERENCES product(id),
   feature VARCHAR(50) UNIQUE,
   value VARCHAR(50) UNIQUE
 );
 
-CREATE TABLE cart (
+CREATE TABLE IF NOT EXISTS cart (
   id INT PRIMARY KEY,
   product_id INT REFERENCES product(id),
   user_session INT,
   active INT
 );
 
-CREATE TABLE photos (
+CREATE TABLE IF NOT EXISTS photos (
   id INT PRIMARY KEY,
   style_id INT REFERENCES styles(id),
-  url VARCHAR(250),
-  thumbnail_url VARCHAR(250)
+  url text,
+  thumbnail_url text
 );
 
-CREATE TABLE related (
+CREATE TABLE IF NOT EXISTS related (
   id INT PRIMARY KEY,
   current_product_id INT REFERENCES product(id),
   related_product_id INT
 );
 
-CREATE TABLE skus (
+CREATE TABLE IF NOT EXISTS skus (
   id INT PRIMARY KEY,
   style_id INT REFERENCES styles(id),
-  size VARCHAR(3),
+  size VARCHAR(10),
   quantity INT
 );
