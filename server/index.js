@@ -8,7 +8,7 @@ app.use(cors());
 app.use(morgan('dev'));
 app.use(express.urlencoded({extended: true}));
 app.use(express.json());
-app.use('/', router);
+app.use('/products', router);
 
 const PORT = process.env.PORT || 3230;
 
