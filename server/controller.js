@@ -10,6 +10,24 @@ module.exports = {
       }
     }).then(response => {
       res.status(200).send(response.data);
-    }).catch(err => res.status(404).send(err));
+    }).catch(err => res.status(500).send(err));
+  },
+
+  getOne: (req, res) => {
+    axios.get(`/products/${req.param.product_id}`)
+    .then(response => res.status(200).send(response.data))
+    .catch(err => res.status(500).send(err));
+  },
+
+  getStyles: (req, res) => {
+    axios.get(`/products/${req.param.product_id}/styles`)
+    .then(response => res.status(200).send(response.data))
+    .catch(err => res.status(500).send(err));
+  },
+
+  getRelated: (req, res) => {
+    axios.get(`/products/${req.param.product_id}/related`)
+    .then(response => res.status(200).send(response.data))
+    .catch(err => res.status(500).send(err));
   }
 }
