@@ -28,6 +28,20 @@ let csvProductStream = fastcsv
   productData.shift();
 
 
+  const importCharacteristicsData = async () => {
+    try {
+      const filePath = path.resolve(__dirname, './files/product.csv')
+      await db.none(
+        `COPY characteristics(id, product_id, name)
+        FROM '${filePath}'
+        DELIMITER ','
+        CSV HEADER;`);
+      console.log('product imported successfully');
+    } catch (error) {
+      console.error('error importing products', error);
+    }
+  };
+
 
 // let cartStream = fs.createReadStream("cart.csv");
 // let cartData = [];
