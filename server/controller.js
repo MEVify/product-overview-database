@@ -9,20 +9,20 @@ module.exports = {
   },
 
   getOne: (req, res) => {
-    model.getOne()
-      .then((response) => res.status(200).send(response.data))
+    model.getOne(req.params.product_id)
+      .then((response) => res.status(200).send(response.product))
       .catch((err) => res.status(500).send(err));
   },
 
   getStyles: (req, res) => {
     model.getStyles()
-      .then((response) => res.status(200).send(response.data))
+      .then((response) => res.status(200).send(response))
       .catch((err) => res.status(500).send(err));
   },
 
   getRelated: (req, res) => {
     model.getRelated()
-      .then((response) => res.status(200).send(response.data))
+      .then((response) => res.status(200).send(response))
       .catch((err) => res.status(500).send(err));
   },
 };
