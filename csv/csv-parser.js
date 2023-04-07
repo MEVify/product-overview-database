@@ -1,5 +1,5 @@
 const path = require("path");
-const db = pgp(process.env.connection);
+const db = require('../server/db');
 
 const importProductData = async () => {
   try {
