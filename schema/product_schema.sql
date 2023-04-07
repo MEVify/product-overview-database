@@ -19,8 +19,8 @@ CREATE TABLE IF NOT EXISTS styles (
 CREATE TABLE IF NOT EXISTS features (
   id INT PRIMARY KEY,
   product_id INT REFERENCES product(id),
-  feature VARCHAR(50) UNIQUE,
-  value VARCHAR(50) UNIQUE
+  feature VARCHAR(200),
+  value VARCHAR(200)
 );
 
 CREATE TABLE IF NOT EXISTS cart (

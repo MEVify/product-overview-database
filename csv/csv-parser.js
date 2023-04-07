@@ -1,14 +1,6 @@
 const path = require("path");
 const pgp = require("pg-promise")();
 
-const connection = {
-  host: 'localhost',
-  port: 3230,
-  database: 'product_overview',
-  user: 'brett',
-  password: '',
-}
-
 const db = pgp(connection);
 
 const importProductData = async () => {
@@ -56,6 +48,7 @@ const importFeaturesData = async () => {
     console.error('error importing features', error);
   }
 }
+// importFeaturesData();
 
 const importCartData = async () => {
   try {
@@ -116,7 +109,7 @@ const importSkuData = async () => {
     console.error('error importing skus', error);
   }
 };
-importSkuData();
+// importSkuData();
 
 
 
