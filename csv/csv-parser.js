@@ -1,7 +1,5 @@
 const path = require("path");
-const pgp = require("pg-promise")();
-
-const db = pgp(connection);
+const db = pgp(process.env.connection);
 
 const importProductData = async () => {
   try {

@@ -3,7 +3,7 @@ const axios = require('axios');
 
 module.exports = {
   getAll: (req, res) => {
-    model.getAll()
+    model.getProducts(page, count, productId)
     .then(response => {
       res.status(200).send(response.data);
     }).catch(err => res.status(500).send(err));
