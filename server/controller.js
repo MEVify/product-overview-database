@@ -3,7 +3,8 @@ const axios = require('axios');
 
 module.exports = {
   getAll: (req, res) => {
-    model.getProducts(page, count, productId)
+    console.log('wowowowow');
+    model.getProducts(req.params.product_id, req.params.page, req.params.count)
     .then(response => {
       res.status(200).send(response.data);
     }).catch(err => res.status(500).send(err));

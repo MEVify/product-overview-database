@@ -1,7 +1,7 @@
-const db = require('./dbv')
+const db = require('./db')
 
 module.exports = {
-  getProducts: (page, count, productId) => {
+  getProducts: (productId = 3, page = 2, count = 5) => {
     try {
       const query = db.many(`SELECT json_agg(
         SELECT json_build_object(
