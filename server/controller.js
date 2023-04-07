@@ -3,30 +3,26 @@ const axios = require('axios');
 
 module.exports = {
   getAll: (req, res) => {
-    axios.get(`/products`,
-    { params:
-      { page: req.query.page || 1,
-        count: req.query.count || 5
-      }
-    }).then(response => {
+    model.getAll()
+    .then(response => {
       res.status(200).send(response.data);
     }).catch(err => res.status(500).send(err));
   },
 
   getOne: (req, res) => {
-    axios.get(`/products/${req.param.product_id}`)
+    model.getOne()
     .then(response => res.status(200).send(response.data))
     .catch(err => res.status(500).send(err));
   },
 
   getStyles: (req, res) => {
-    axios.get(`/products/${req.param.product_id}/styles`)
+    model.getStyles()
     .then(response => res.status(200).send(response.data))
     .catch(err => res.status(500).send(err));
   },
 
   getRelated: (req, res) => {
-    axios.get(`/products/${req.param.product_id}/related`)
+    model.getRelated()
     .then(response => res.status(200).send(response.data))
     .catch(err => res.status(500).send(err));
   }

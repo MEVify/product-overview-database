@@ -3,6 +3,7 @@ const express = require('express');
 const app = express();
 const path = require('path');
 const cors = require('cors');
+const router = require('./router')
 
 app.use(cors());
 app.use(morgan('dev'));
@@ -15,5 +16,3 @@ const PORT = process.env.PORT || 3230;
 app.listen(PORT, () => {
   console.log(`Server listening on port: ${PORT}`);
 })
-
-// app.use(express.static())
