@@ -81,4 +81,14 @@ module.exports = {
       WHERE product.id = ${productId};`,
     )
   ),
+
+  getRelated: (productId) => (
+    db.one(
+      `SELECT json_agg(
+        related_product_id
+      )
+      FROM related
+      WHERE related.current_product_id = ${productId};`,
+    )
+  ),
 };

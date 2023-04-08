@@ -21,8 +21,8 @@ module.exports = {
   },
 
   getRelated: (req, res) => {
-    model.getRelated()
-      .then((response) => res.status(200).send(response))
+    model.getRelated(req.params.product_id)
+      .then((response) => res.status(200).send(response.json_agg))
       .catch((err) => res.status(500).send(err));
   },
 };
