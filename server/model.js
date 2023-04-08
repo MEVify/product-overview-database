@@ -38,7 +38,7 @@ module.exports = {
   getStyles: (productId) => (
     db.one(
       SELECT json_build_object(
-        'product_id', 43050,
+        'product_id', 43044,
         'results', (
           SELECT json_agg(
             json_build_object(
@@ -59,64 +59,68 @@ module.exports = {
             )
           )
           FROM styles
-          WHERE styles.product_id = 43050
+          WHERE styles.product_id = 43044
         ),
         'skus', (
-          SELECT json_build_object(
-            'id', skus.id,
-            'quantity', skus.quantity,
-            'size', skus.size
+          SELECT json_object_agg(
+            skus.id, (
+              json_build_object(
+                'quantity', skus.quantity,
+                'size', skus.size
+              )
+              FROM skus
+              WHERE skus.style_id = 79274
+            )
           )
-          FROM skus, styles
-          WHERE skus.style_id = styles.id
+          FROM skus
+          WHERE skus.style_id = 79274;
         )
       )
       AS product
       FROM product
-      WHERE product.id = 43050;
+      WHERE product.id = 43044;,
     )
   ),
 };
 
-
-getStyles: (productId) => (
-  db.one(
-    SELECT json_build_object(
-      'product_id', 43050,
-      'results', (
-        SELECT json_agg(
-          json_build_object(
-            'style_id', id,
-            'name', name,
-            'sale_price', sale_price,
-            'default?', default_style,
-            'photos', (
-              SELECT json_agg(
-                json_build_object(
-                'thumbnail_url', thumbnail_url,
-                'url', url
-                )
-              )
-              FROM photos
-              WHERE photos.style_id = styles.id
-            )
-          )
-        )
-        FROM styles
-        WHERE styles.product_id = 43050
-      ),
-      'skus', (
-        SELECT json_build_object(
-          'id', skus.id,
-          'quantity', skus.quantity,
-          'size', skus.size
-        )
-        FROM skus, styles
-        WHERE skus.style_id = styles.id
-      )
-    )
-    AS product
-    FROM product
-    WHERE product.id = 43050;
-  )
-),
+// getStyles: (productId) => (
+//   db.one(
+//     SELECT json_build_object(
+//       'product_id', 43050,
+//       'results', (
+//         SELECT json_agg(
+//           json_build_object(
+//             'style_id', id,
+//             'name', name,
+//             'sale_price', sale_price,
+//             'default?', default_style,
+//             'photos', (
+//               SELECT json_agg(
+//                 json_build_object(
+//                 'thumbnail_url', thumbnail_url,
+//                 'url', url
+//                 )
+//               )
+//               FROM photos
+//               WHERE photos.style_id = styles.id
+//             )
+//           )
+//         )
+//         FROM styles
+//         WHERE styles.product_id = 43050
+//       ),
+//       'skus', (
+//         SELECT json_build_object(
+//           'id', skus.id,
+//           'quantity', skus.quantity,
+//           'size', skus.size
+//         )
+//         FROM skus, styles
+//         WHERE skus.style_id = styles.id
+//       )
+//     )
+//     AS product
+//     FROM product
+//     WHERE product.id = 43050;
+//   )
+// ),
