@@ -55,8 +55,7 @@ module.exports = {
                   )
                 )
                 FROM photos
-                INNER JOIN styles ON photos.style_id = styles.id
-                WHERE styles.product_id = ${productId}
+                WHERE photos.style_id = styles.id
               ),
               'skus', (
                 SELECT json_object_agg(
@@ -69,9 +68,8 @@ module.exports = {
                 )
                   AS skus
                   FROM skus
-                  INNER JOIN styles on skus.style_id = styles.id
-                  WHERE styles.product_id = ${productId}
-                )
+                  WHERE skus.style_id = styles.id
+              )
             )
           )
             FROM styles
