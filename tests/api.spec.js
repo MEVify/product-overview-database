@@ -91,14 +91,27 @@ describe('getStyles', () => {
   }, 15000);
 });
 
+describe('getRelated', () => {
+  const productId = 21244;
 
-// expect(response.body[1]).toEqual(
-//   expect.objectContaining({
-//     id: expect.any(Number),
-//     name: expect.any(String),
-//     slogan: expect.any(String),
-//     description: expect.any(String),
-//     category: expect.any(String),
-//     default_price: expect.any(Number),
-//   }),
-// );
+  it('Should return related ids as an array', async () => {
+    const response = await request(app)
+      .get(`/products/${productId}/related`);
+
+    expect(response.statusCode).toBe(200);
+    expect(Array.isArray(response.body)).toBe(true);
+    expect(response.body).toHaveLength(5);
+  });
+
+  it('Should return related ids based on product id', async () => {
+    const response = await request(app)
+      .get(`/products/${productId}/related`)
+      .query({
+        page: 2,
+        count: 5,
+      });
+
+    const relatedIds = [6672, 8189, 8652, 10804, 9149];
+    expect(response.body).toEqual(relatedIds);
+  });
+});
