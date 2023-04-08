@@ -68,6 +68,28 @@ describe('getOne', () => {
   });
 });
 
+describe('getStyles', () => {
+  it('Should return styles for specified product id', async () => {
+    const productId = 12953;
+    const response = await request(app)
+      .get(`/products/${productId}/styles`);
+
+    expect(response.statusCode).toBe(200);
+    expect(Array.isArray(response.body.results)).toBe(true);
+    expect(response.body.results.length).toBe(3);
+    expect(response.body.results[0]).toEqual(
+      expect.objectContaining({
+        style_id: 25618,
+        name: 'Black',
+        original_price: 452,
+        sale_price: null,
+        'default?': true,
+        photos: expect.any(Array),
+        skus: expect.any(Object),
+      }),
+    );
+  }, 15000);
+});
 
 
 // expect(response.body[1]).toEqual(
