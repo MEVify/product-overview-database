@@ -37,13 +37,14 @@ module.exports = {
 
   getStyles: (productId) => (
     db.one(
-      SELECT json_build_object(
+      `SELECT json_build_object(
         'product_id', 43044,
         'results', (
           SELECT json_agg(
             json_build_object(
               'style_id', id,
               'name', name,
+              'original_price', original_price,
               'sale_price', sale_price,
               'default?', default_style,
               'photos', (
@@ -59,30 +60,18 @@ module.exports = {
               )
             )
           )
-          FROM styles
-          WHERE styles.product_id = 43044
-        ),
-        'skus', (
-          SELECT json_object_agg(
-            skus.id, (
-              json_build_object(
-                'quantity', skus.quantity,
-                'size', skus.size
-              )
-            )
-          )
-          AS skus
-          FROM skus
-          INNER JOIN styles on skus.style_id = styles.id
-          WHERE styles.product_id = 43044
+            FROM styles
+            WHERE styles.product_id = 43044
         )
       )
       AS product
       FROM product
-      WHERE product.id = 43044;,
+      WHERE product.id = 43044;`,
     )
-  ),
+  )
 };
+
+
 
 // getStyles: (productId) => (
 //   db.one(
@@ -103,13 +92,10 @@ module.exports = {
 //                 )
 //               )
 //               FROM photos
-//               WHERE photos.style_id = styles.styles_id
+//               INNER JOIN styles ON photos.style_id = styles.id
+//               WHERE styles.product_id = 43044
 //             )
-//           )
-//         )
-//         FROM styles
-//         WHERE styles.product_id = 43044
-//       ),
+//           ),
 //       'skus', (
 //         SELECT json_object_agg(
 //           skus.id, (
@@ -119,12 +105,19 @@ module.exports = {
 //             )
 //           )
 //         )
-//         FROM skus, styles
-//         WHERE skus.style_id = styles.id
+//           AS skus
+//           FROM skus
+//           INNER JOIN styles on skus.style_id = styles.id
+//           WHERE styles.product_id = 43044
+//         )
+//         )
+//           FROM styles
+//           WHERE styles.product_id = 43044
 //       )
 //     )
 //     AS product
 //     FROM product
 //     WHERE product.id = 43044;,
 //   )
-// ),
+// )
+// };
