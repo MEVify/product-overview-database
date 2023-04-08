@@ -66,6 +66,17 @@ describe('getOne', () => {
       }),
     );
   });
+
+  it('Should return 500 error if product id doesn\'t exist', async () => {
+    const productId = 123456789;
+    const response = await request(app)
+      .get(`/products/${productId}`)
+      .query({
+        fake_data: 2,
+        send_error: 10000000,
+      });
+    expect(response.statusCode).toBe(500);
+  });
 });
 
 describe('getStyles', () => {
