@@ -68,12 +68,10 @@ module.exports = {
                 'quantity', skus.quantity,
                 'size', skus.size
               )
-              FROM skus
-              WHERE skus.style_id = 79274
             )
           )
-          FROM skus
-          WHERE skus.style_id = 79274;
+          FROM skus, styles
+          WHERE skus.style_id = styles.id
         )
       )
       AS product
