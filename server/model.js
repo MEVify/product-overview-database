@@ -45,17 +45,7 @@ module.exports = {
               'style_id', id,
               'name', name,
               'sale_price', sale_price,
-              'default?', default_style,
-              'photos', (
-                SELECT json_agg(
-                  json_build_object(
-                  'thumbnail_url', thumbnail_url,
-                  'url', url
-                  )
-                )
-                FROM photos
-                WHERE photos.style_id = styles.id
-              )
+              'default?', default_style
             )
           )
           FROM styles
@@ -70,8 +60,10 @@ module.exports = {
               )
             )
           )
-          FROM skus, styles
-          WHERE skus.style_id = styles.id
+          AS skus
+          FROM skus
+          INNER JOIN styles on skus.style_id = styles.id
+          WHERE styles.product_id = 43044
         )
       )
       AS product
@@ -84,7 +76,7 @@ module.exports = {
 // getStyles: (productId) => (
 //   db.one(
 //     SELECT json_build_object(
-//       'product_id', 43050,
+//       'product_id', 43044,
 //       'results', (
 //         SELECT json_agg(
 //           json_build_object(
@@ -100,18 +92,21 @@ module.exports = {
 //                 )
 //               )
 //               FROM photos
-//               WHERE photos.style_id = styles.id
+//               WHERE photos.style_id = styles.styles_id
 //             )
 //           )
 //         )
 //         FROM styles
-//         WHERE styles.product_id = 43050
+//         WHERE styles.product_id = 43044
 //       ),
 //       'skus', (
-//         SELECT json_build_object(
-//           'id', skus.id,
-//           'quantity', skus.quantity,
-//           'size', skus.size
+//         SELECT json_object_agg(
+//           skus.id, (
+//             json_build_object(
+//               'quantity', skus.quantity,
+//               'size', skus.size
+//             )
+//           )
 //         )
 //         FROM skus, styles
 //         WHERE skus.style_id = styles.id
@@ -119,6 +114,6 @@ module.exports = {
 //     )
 //     AS product
 //     FROM product
-//     WHERE product.id = 43050;
+//     WHERE product.id = 43044;,
 //   )
 // ),
