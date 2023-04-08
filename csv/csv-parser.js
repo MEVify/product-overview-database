@@ -15,6 +15,7 @@ const importProductData = async () => {
     console.error('error importing products', error);
   }
 };
+// importProductData();
 
 const importStylesData = async () => {
   try {
@@ -31,6 +32,7 @@ const importStylesData = async () => {
     console.error('error importing styles', error);
   }
 };
+// importStylesData();
 
 const importFeaturesData = async () => {
   try {
@@ -62,6 +64,7 @@ const importCartData = async () => {
     console.error('error importing cart', error);
   }
 };
+// importCartData();
 
 const importPhotosData = async () => {
   try {
@@ -77,6 +80,7 @@ const importPhotosData = async () => {
     console.error('error importing photos', error);
   }
 };
+// importPhotosData();
 
 const importRelatedData = async () => {
   try {
@@ -92,6 +96,7 @@ const importRelatedData = async () => {
     console.error('error importing related', error);
   }
 };
+// importRelatedData();
 
 const importSkuData = async () => {
   try {
@@ -107,10 +112,4 @@ const importSkuData = async () => {
     console.error('error importing skus', error);
   }
 };
-// importProductData();
-// importStylesData();
-// importFeaturesData();
-// importCartData();
-// importPhotosData();
-// importRelatedData();
 // importSkuData();
