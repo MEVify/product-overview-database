@@ -15,7 +15,7 @@ module.exports = {
   },
 
   getStyles: (req, res) => {
-    model.getStyles()
+    model.getStyles(req.params.product_id)
       .then((response) => res.status(200).send(response))
       .catch((err) => res.status(500).send(err));
   },
