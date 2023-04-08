@@ -45,7 +45,18 @@ module.exports = {
               'style_id', id,
               'name', name,
               'sale_price', sale_price,
-              'default?', default_style
+              'default?', default_style,
+              'photos', (
+                SELECT json_agg(
+                  json_build_object(
+                  'thumbnail_url', thumbnail_url,
+                  'url', url
+                  )
+                )
+                FROM photos
+                INNER JOIN styles ON photos.style_id = styles.id
+                WHERE styles.product_id = 43044
+              )
             )
           )
           FROM styles
