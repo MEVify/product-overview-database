@@ -3,3 +3,9 @@
 
 # env
 *.env
+
+# jest coverage reports
+coverage/
+
+# node modules
+node_modules/
