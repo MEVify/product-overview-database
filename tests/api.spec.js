@@ -70,7 +70,7 @@ describe('getOne', () => {
   it('Should return data for specified product id', async () => {
     const productId = 123456789;
     const response = await request(app)
-      .get(`/products/${productId}`)
+      .get(`/products/${productId}`);
     expect(response.statusCode).toBe(500);
   });
 });

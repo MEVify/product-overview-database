@@ -22,7 +22,7 @@ module.exports = {
 
   getRelated: (req, res) => {
     model.getRelated(req.params.product_id)
-      .then((response) => res.status(200).send(response.json_agg))
+      .then((response) => res.status(200).send(response.related))
       .catch((err) => res.status(500).send(err));
   },
 };
