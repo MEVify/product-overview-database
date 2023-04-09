@@ -87,6 +87,7 @@ module.exports = {
       `SELECT json_agg(
         related_product_id
       )
+      AS related
       FROM related
       WHERE related.current_product_id = ${productId};`,
     )
