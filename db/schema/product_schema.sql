@@ -68,6 +68,12 @@ CREATE INDEX photos_id_index
 CREATE INDEX related_id_index
   ON related(id);
 
+CREATE INDEX related_currentProductId_index
+  ON related(current_product_id);
+
+CREATE INDEX related_relatedProductId_index
+  ON related(related_product_id);
+
 CREATE INDEX features_productId_index
   ON features(product_id);
 
