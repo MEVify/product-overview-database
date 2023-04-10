@@ -1,6 +1,6 @@
 import http from 'k6/http';
 import { sleep, check } from 'k6';
-import productIds from './k6ProductIds';
+import productIds from './k6ProductIds.js';
 
 export const options = {
   vus: 50,
