@@ -49,3 +49,27 @@ CREATE TABLE IF NOT EXISTS skus (
   size VARCHAR(10),
   quantity INT
 );
+
+CREATE INDEX product_id_index
+  ON product(id);
+
+CREATE INDEX styles_id_index
+  ON styles(id);
+
+CREATE INDEX skus_id_index
+  ON skus(id);
+
+CREATE INDEX photos_id_index
+  ON photos(id);
+
+CREATE INDEX features_productId_index
+  ON features(product_id);
+
+CREATE INDEX style_productId_index
+  ON styles(product_id);
+
+CREATE INDEX photos_styleId_index
+  ON photos(style_id);
+
+CREATE INDEX skus_styleId_index
+  ON skus(style_id);

@@ -1,6 +1,6 @@
 import http from 'k6/http';
 import { sleep, check } from 'k6';
-import productIds from './seed.js';
+import productIds from './k6ProductIds';
 
 export const options = {
   vus: 50,
@@ -19,8 +19,7 @@ export default function main() {
   const productId = productIds[Math.floor(Math.random() * productIds.length)];
 
   const batch = [
-    { method: 'GET', url: `http://localhost:3034/api/products/${productId}` },
-    // { method: 'GET', url: `http://localhost:3034/api/products?page=1&count=50`},
+    { method: 'GET', url: `http://localhost:3230/products/${productId}` },
   ];
 
   const responses = http.batch(batch);
@@ -32,4 +31,4 @@ export default function main() {
   });
 }
 
-// k6 run --out cloud ProductOverview/db/k6/LoadTest.js
+// k6 run --out cloud k6Load.js

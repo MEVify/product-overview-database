@@ -1,4 +1,4 @@
-const testProductIds = [
+export default [
   182111,
   182112,
   182113,
@@ -299,5 +299,3 @@ const testProductIds = [
   993298,
   993299,
 ];
-
-export default testProductIds;
