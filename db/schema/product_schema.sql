@@ -59,8 +59,14 @@ CREATE INDEX styles_id_index
 CREATE INDEX skus_id_index
   ON skus(id);
 
+CREATE INDEX features_id_index
+  ON features(id);
+
 CREATE INDEX photos_id_index
   ON photos(id);
+
+CREATE INDEX related_id_index
+  ON related(id);
 
 CREATE INDEX features_productId_index
   ON features(product_id);

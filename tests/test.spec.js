@@ -67,7 +67,7 @@ describe('getOne', () => {
     );
   });
 
-  it('Should return data for specified product id', async () => {
+  it('Should return error for non-existant product id', async () => {
     const productId = 123456789;
     const response = await request(app)
       .get(`/products/${productId}`);

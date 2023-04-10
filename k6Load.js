@@ -19,7 +19,7 @@ export default function main() {
   const productId = productIds[Math.floor(Math.random() * productIds.length)];
 
   const batch = [
-    { method: 'GET', url: `http://localhost:3230/products/${productId}` },
+    { method: 'GET', url: `http://localhost:3230/products/${productId}/related` },
   ];
 
   const responses = http.batch(batch);
