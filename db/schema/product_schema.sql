@@ -50,24 +50,6 @@ CREATE TABLE IF NOT EXISTS skus (
   quantity INT
 );
 
-CREATE INDEX product_id_index
-  ON product(id);
-
-CREATE INDEX styles_id_index
-  ON styles(id);
-
-CREATE INDEX skus_id_index
-  ON skus(id);
-
-CREATE INDEX features_id_index
-  ON features(id);
-
-CREATE INDEX photos_id_index
-  ON photos(id);
-
-CREATE INDEX related_id_index
-  ON related(id);
-
 CREATE INDEX related_currentProductId_index
   ON related(current_product_id);
 

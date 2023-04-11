@@ -9,3 +9,6 @@ coverage/
 
 # node modules
 node_modules/
+
+# Postgres pg_dump
+productOverview.pgsql
