@@ -1,7 +1,7 @@
 const pgp = require('pg-promise')();
 
 const connection = {
-  host: 'localhost',
+  host: '52.21.104.6',
   database: 'product_overview',
   user: 'brett',
   password: '',
