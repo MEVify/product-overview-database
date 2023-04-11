@@ -11,7 +11,10 @@ module.exports = {
   getOne: (req, res) => {
     model.getOne(req.params.product_id)
       .then((response) => res.status(200).send(response.product))
-      .catch((err) => res.status(500).send(err));
+      .catch((err) => {
+        res.status(500).send(err);
+        console.log(err);
+      });
   },
 
   getStyles: (req, res) => {
