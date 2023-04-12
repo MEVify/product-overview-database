@@ -2,7 +2,7 @@ const morgan = require('morgan');
 const express = require('express');
 const cors = require('cors');
 const router = require('./router');
-const payload = require('../k6ProductIds.js');
+const payload = require('../loaderProductIds.js');
 
 const app = express();
 
