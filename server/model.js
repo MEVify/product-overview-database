@@ -9,9 +9,8 @@ module.exports = {
     )
   ),
 
-  getOne: (productId) => {
-    console.log('hello from ProductId');
-    return db.one(
+  getOne: (productId) => (
+    db.one(
       `SELECT json_build_object(
         'id', id,
         'name', name,
@@ -34,7 +33,7 @@ module.exports = {
         FROM product
         WHERE id = ${productId};`,
     )
-  },
+  ),
 
   getStyles: (productId) => (
     db.one(
