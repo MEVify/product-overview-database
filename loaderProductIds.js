@@ -1,7 +1,6 @@
 module.exports = {
   version: 1,
   variables: [{
-    productId: ['productId'],
     values: [
       [182111],
       [182112],

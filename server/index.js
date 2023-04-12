@@ -18,7 +18,7 @@ app.get('/loaderio-270ab75e2947899575ebf3f6990d9f8f', (req, res) => (
 ));
 
 // Payload for loader.io
-app.get('/load-file', (req, res) => { res.send(payload); });
+app.get('/load-file', (req, res) => { res.send(payload); console.log(payload)});
 
 const PORT = process.env.PORT || 3230;
 
