@@ -2,7 +2,7 @@ const pgp = require('pg-promise')();
 
 const connection = {
   user: 'brett',
-  host: 'ec2-3-82-129-44.compute-1.amazonaws.com',
+  host: 'ec2-3-95-168-61.compute-1.amazonaws.com',
   database: 'product_overview',
   password: 'password',
   port: 5432,
