@@ -21,7 +21,7 @@ Installation
 
 ## Author
 
-[Brett Tanonaka](https://www.github.com/)
+[Brett Tanonaka](https://github.com/B-Tanonaka)
 
 ## Collaborators
 [Mevludin Causevic](https://github.com/mevcaus)\
@@ -77,7 +77,7 @@ Each component was hosted on an Amazon Web Services (AWS) EC2 instance. AWS RDS 
 
 ## Stress Testing
 
-#### Loader.io - Deployed testing after optimizing 
+#### Loader.io - Deployed testing after optimizing
 
 - Deployed testing was primarily on the styles endpoint because it is the most data demanding
 
