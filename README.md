@@ -49,7 +49,7 @@ Each server is able to handle around 2,500 requests per second with caching
 
 #### Database
 
-PostgreSQL, a ralational database was used as each product has a set of associated styles, photos, and sku numbers
+PostgreSQL, a relational database was used as each product has a set of associated styles, photos, and sku numbers
 
 <details>
   <summary>Schema photo example</summary>
