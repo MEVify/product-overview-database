@@ -12,7 +12,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use('/products', router);
 
-// Verify for loader.io
+// Verify for loader.io for single server
 app.get('/loaderio-270ab75e2947899575ebf3f6990d9f8f', (req, res) => (
   res.send('loaderio-270ab75e2947899575ebf3f6990d9f8f')
 ));
